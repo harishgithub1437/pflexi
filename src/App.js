@@ -3,18 +3,29 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
+import ThankYou from './pages/ThankYoupage'; // Add this import
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
-    <Router basename="/flexistore.in">
+    // keep your basename if you need it for deployment
+    <Router>
+      <ScrollToTop />
       <Navbar />
-      <div style={{minHeight: '100vh'}}>
+      <div style={{ minHeight: '100vh' }}>
         <Routes>
+          {/* single canonical home route */}
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+
+          {/* other pages */}
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/thank-you" element={<ThankYou />} /> {/* Add this route */}
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
